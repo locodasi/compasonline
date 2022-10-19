@@ -1,0 +1,34 @@
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="stylesheet" href="/css/styles.css"  crossorigin="anonymous">
+<link rel="stylesheet" href="/css/style.css"  crossorigin="anonymous">
+</head>
+
+<div class="wrapper fadeInDown">
+  <div id="formContent">
+    <!-- Tabs Titles -->
+    <a class="underlineHover trampa" href="login"> Sign In </a>
+    <a class="underlineHover trampa active" href="#" >Sign Up </a>
+
+
+    <!-- Login Form -->
+    
+    <form action="#" th:action="@{nuevoUsuario}" th:object="${usuario}" method="post">
+    
+		<input type="text" class="fadeIn second" name="usuario" id="usuario" placeholder="Username" />
+		<p th:if="${#fields.hasErrors('usuario')}" th:errors="*{usuario}"> Usuario no valido </p>
+		<p th:if="${error}"> Usuario ya existente</p>
+		
+		<input type="password" class="fadeIn third" name="contra" id="contra" placeholder="Password" />
+		<p th:if="${#fields.hasErrors('contra')}" th:errors="*{contra}"> Contra no valido </p>
+		
+		<input type="text" class="fadeIn fourth" name="email" id="email" placeholder="email" />
+		<p th:if="${#fields.hasErrors('email')}" th:errors="*{email}"> Email no valido </p>
+		
+		<input type="submit" class="fadeIn five" value="Check in"/>
+	</form>
+
+
+  </div>
+</div>

@@ -1,0 +1,71 @@
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="stylesheet" href="/css/barraNavegadoraStyle.css"  crossorigin="anonymous">
+<link rel="stylesheet" href="/css/tablasEdicionStyle.css"  crossorigin="anonymous">
+<link rel="stylesheet" href="/css/formStyle.css"  crossorigin="anonymous">
+<link rel="stylesheet" href="/css/styles.css"  crossorigin="anonymous">
+
+</head>
+
+<body>
+
+<div id="container">
+<ul id="menu">
+  <li><a href="#"><span th:text="${usuario}" /></a>
+
+	<li><a  class="tab wave dark" href="/productos/verProductos">Productos</a>
+
+	<li><a  class="tab wave dark tocado" href="#">Mensajes</a>
+	
+  	<li th:if="${usuario=='admin'}"><a class="tab wave dark" href="/productos/crearProductos">Crear Productos</a>
+  	
+  	<li th:if="${usuario=='admin'}"><a class="tab wave dark" href="/productos/editarProductos">Editar Productos</a>
+  	
+  	<li><a href="/logout">Salir</a><li>
+  	
+  </div>
+  
+</ul>
+</div>
+
+
+<div th:if="${usuario=='admin'}">
+
+<div class="container">
+	<table style="white-space: pre-wrap;">
+		<tbody>
+			<tr th:each= "u : ${usuarios}">
+			<td>
+				<a th:if="${u.usuario!='admin'}" th:href="@{/mensajes/verMensajesId/} + ${u.usuario}" th:text = "${u.usuario}"></a>
+			</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+</div>
+
+
+<div th:unless="${usuario=='admin'}">
+
+<div class="container">
+	<table style="white-space: pre-wrap;">
+		<tbody>
+			<tr th:each= "m : ${mensajes}">
+				<td class="otro" th:if="${m.usuario_emisor.id == 1}" th:text = "${m.mensaje}"></td>
+				<td class="mio" th:if="${m.usuario_emisor.id != 1}" th:text = "${m.mensaje}"></td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+</div>
+
+<form th:unless="${usuario=='admin'}" class="form text-left text-nowrap" action="#" th:action="@{/mensajes/nuevoMensaje}" th:object="${mensaje}" method="post">
+  <input type="hidden" th:field="*{id}" />
+  <textarea rows="7" type="text" name="mensaje"  th:field="*{mensaje}"></textarea>
+  <p th:if="${#fields.hasErrors('mensaje')}" th:errors="*{mensaje}"> mensaje no valido </p>
+
+  <button type="submit">Enviar</button>
+</form>

@@ -1,0 +1,76 @@
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="stylesheet" href="/css/barraNavegadoraStyle.css"  crossorigin="anonymous">
+<link rel="stylesheet" href="/css/tablasEdicionStyle.css"  crossorigin="anonymous">
+  
+</head>
+
+<body>
+
+
+<div id="container">
+<ul id="menu">
+  <li><a href="#"><span th:text="${usuario}" /></a>
+
+	<li><a  class="tab wave dark " href="/productos/verProductos">Productos</a>
+
+	<li><a  class="tab wave dark" href="/mensajes/verMensajes">Mensajes</a>
+	
+  	<li th:if="${usuario=='admin'}"><a class="tab wave dark" href="/productos/crearProductos">Crear Productos</a>
+  	
+  	<li th:if="${usuario=='admin'}"><a class="tab wave dark tocado" href="#">Editar Productos</a>
+  	
+  	<li><a href="/logout">Salir</a><li>
+  	
+  </div>
+  
+</ul>
+</div>
+
+
+<div class="container">
+	<h1> Lista de rubros</h1>
+	<table>
+		<thead>
+			<tr>
+				<th>#ID</th>
+				<th>Descripcion</th>
+				<th>Acciones</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each= "r : ${listaRubros}">
+				<td th:text = "${r.id}"></td>
+				<td th:text = "${r.descripcion}"></td>
+				<td> 
+					<a th:href="@{/productos/editarRubro/} + ${r.id}" th:text="Editar" title= "Editar"></a>
+				    <a th:href="@{/productos/borrarRubro/} + ${r.id}" th:text="Borrar" title= "Borrar" class= "borrar"></a>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+<div class="container">
+	<h1> Lista de rubrosssss</h1>
+	<table>
+		<thead>
+			<tr>
+				<th>#ID</th>
+				<th>Descripcion</th>
+				<th>Acciones</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each= "r : ${listaRubros}">
+				<td th:text = "${r.id}"></td>
+				<td th:text = "${r.descripcion}"></td>
+				<td> 
+					<a th:href="@{/productos/editarRubro/} + ${r.id}" th:text="Editar" title= "Editar"></a>
+				    <a th:href="@{/productos/borrarRubro/} + ${r.id}" th:text="Borrar" title= "Borrar" class= "borrar"></a>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>

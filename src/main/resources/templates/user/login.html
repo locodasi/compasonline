@@ -1,0 +1,32 @@
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="stylesheet" href="/css/styles.css"  crossorigin="anonymous">
+<link rel="stylesheet" href="/css/style.css"  crossorigin="anonymous">
+</head>
+
+<div class="wrapper fadeInDown">
+  <div id="formContent">
+    <!-- Tabs Titles -->
+    <a class="underlineHover trampa active"  href="#"> Sign In </a>
+    <a class="underlineHover trampa"  href="/crearUsuario" >Sign Up </a>
+
+
+    <!-- Login Form -->
+    
+    <form th:action="@{/loginprocess}" method="post">
+		      	<input type="text" class="fadeIn second" name="username" id="username" placeholder="Username" />
+		      	<input type="password" class="fadeIn third" name="password" id="password" placeholder="Password" />
+		      	<input type="submit" class="fadeIn fourth" value="Log In"/>
+	</form>
+	<div th:if="${error != null}" >
+		    	Datos incorrectos.
+	</div>
+
+    <!-- Remind Passowrd -->
+    <div id="formFooter">
+      <a class="underlineHover" href="#">Forgot Password?</a>
+    </div>
+
+  </div>
+</div>

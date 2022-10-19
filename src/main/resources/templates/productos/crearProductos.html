@@ -1,0 +1,68 @@
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="stylesheet" href="/css/barraNavegadoraStyle.css"  crossorigin="anonymous">
+<link rel="stylesheet" href="/css/formStyle.css"  crossorigin="anonymous">
+<link rel="stylesheet" href="/js/navegadoraScripts.js"  crossorigin="anonymous">
+</head>
+
+<body>
+
+<div id="container">
+<ul id="menu">
+  <li><a href="#"><span th:text="${usuario}" /></a>
+
+	<li><a  class="tab wave dark" href="/productos/verProductos">Productos</a>
+
+	<li><a  class="tab wave dark" href="/mensajes/verMensajes">Mensajes</a>
+	
+  	<li th:if="${usuario=='admin'}"><a class="tab wave dark tocado" href="#">Crear Productos</a>
+  	
+  	<li th:if="${usuario=='admin'}"><a class="tab wave dark" href="/productos/editarProductos">Editar Productos</a>
+  	
+  	<li><a href="/logout">Salir</a><li>
+  	
+  </div>
+  
+</ul>
+</div>
+
+
+
+<form class="form " action="#" th:action="@{/productos/nuevoRubro}" th:object="${rubro}" method="post">
+  <h2>Creador de rubros</h2>
+  
+  <input type="hidden" th:field="*{id}" />
+  <p type="Descripcion:"><input type="text" name="descripcion" placeholder="EJ: Exteriores" th:field="*{descripcion}"></input></p>
+  <p th:if="${#fields.hasErrors('descripcion')}" th:errors="*{descripcion}"> descripcion no valido </p>
+
+  <button type="submit">Agregar/Modificar</button>
+</form>
+
+<form class="form " action="#" th:action="@{/api/v0/producto/agregarProducto}" th:object="${producto}" method="post">
+  <h2>Creador de productos</h2>
+  
+  <input type="hidden" th:field="*{id}" />
+  <p type="Nombre:"><input type="text" name="nombre" placeholder="EJ: Camisa" th:field="*{nombre}"></input></p>
+  <p th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"> nombre no valido </p>
+  
+  <p type="Costo:"><input type="number" name="costo" placeholder="0" th:field="*{costo}"></input></p>
+  <p th:if="${#fields.hasErrors('costo')}" th:errors="*{costo}"> costo no valido </p>
+  
+  <p type="Descripcion:"><textarea rows="5" name="descripcion" placeholder="EJ: remera muy linda" th:field="*{descripcion}"></textarea></p>
+  <p th:if="${#fields.hasErrors('descripcion')}" th:errors="*{descripcion}"> descripcion no valido </p>
+  
+  <p type="Rubros:"><select name="rubros" size="5" th:field="*{rubros}" multiple required>
+  						<option th:each= "r : ${listaRubros}" th:text="${r.descripcion}" value="${r.id}">  </option>
+  					</select></p>
+  <p th:if="${#fields.hasErrors('rubros')}" th:errors="*{rubros}"> Elije al menos un rubro </p>
+  <small class="text-muted"><code>Mayús + clic</code> para seleccionar más de una opción</small>
+
+  <p type="Imagen:"><input class="form-control"  type="file" name="file"  id="imagen" accept="image/*"></input></p>
+  <p th:if="${#fields.hasErrors('imagen')}" th:errors="*{imagen}"> Elije al menos una imagen</p>
+  
+
+  <button type="submit">Agregar/Modificar</button>
+</form>
+
+</body>

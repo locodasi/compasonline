@@ -1,0 +1,31 @@
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="stylesheet" href="/css/tablasEdicionStyle.css"  crossorigin="anonymous">
+<link rel="stylesheet" href="/css/formStyle.css"  crossorigin="anonymous">
+<link rel="stylesheet" href="/css/styles.css"  crossorigin="anonymous">
+<link rel="stylesheet" href="/css/barraNavegadoraStyle.css"  crossorigin="anonymous">
+
+</head>
+
+<a th:href="@{/mensajes/verMensajes}"> c-- </a> <h5 th:text="@{Chat con: } + ${usuario.usuario}"> </h5>
+
+
+<div class="container">
+	<table style="white-space: pre-wrap;">
+		<tbody>
+			<tr th:each= "m : ${mensajes}">
+				<td class="mio" th:if="${m.usuario_emisor.id == 1}" th:text = "${m.mensaje}"></td>
+				<td class="otro" th:if="${m.usuario_emisor.id != 1}" th:text = "${m.mensaje}"></td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+<form  class="form text-left text-nowrap" action="#" th:action="@{/mensajes/nuevoMensajeId/} + ${usuario.usuario}" th:object="${mensaje}" method="post">
+  <input type="hidden" th:field="*{id}" />
+  <textarea rows="7" type="text" name="mensaje"  th:field="*{mensaje}"></textarea>
+  <p th:if="${#fields.hasErrors('mensaje')}" th:errors="*{mensaje}"> mensaje no valido </p>
+
+  <button type="submit">Enviar</button>
+</form>

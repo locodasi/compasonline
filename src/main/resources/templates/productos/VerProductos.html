@@ -1,0 +1,32 @@
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="stylesheet" href="/css/barraNavegadoraStyle.css"  crossorigin="anonymous">
+<link rel="stylesheet" href="/js/navegadoraScripts.js"  crossorigin="anonymous">
+   
+</head>
+
+<body>
+
+<div id="container">
+<ul id="menu">
+  <li><a href="#"><span th:text="${usuario}" /></a>
+
+	<li><a  class="tab wave dark tocado" href="#">Productos</a>
+
+	<li><a  class="tab wave dark" href="/mensajes/verMensajes">Mensajes</a>
+	
+  	<li th:if="${usuario=='admin'}"><a class="tab wave dark" href="/productos/crearProductos">Crear Productos</a>
+  	
+  	<li th:if="${usuario=='admin'}"><a class="tab wave dark" href="/productos/editarProductos">Editar Productos</a>
+  	
+  	<li><a href="/logout">Salir</a><li>
+  	
+  </div>
+  
+</ul>
+</div>
+
+
+<p> hola </p>
+</body>
