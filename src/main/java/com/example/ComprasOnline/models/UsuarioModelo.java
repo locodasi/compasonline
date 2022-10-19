@@ -78,11 +78,7 @@ public class UsuarioModelo {
 
 	@Override
 	public String toString() {
-		return "UsuarioModelo [id=" + id + ", usuario=" + usuario + "]";
+		return "UsuarioModelo [id=" + id + ", usuario=" + usuario + ", contra=" + contra + ", email=" + email + "]";
 	}
-
-
-	
-	
 	
 }

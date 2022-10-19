@@ -1,0 +1,43 @@
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="stylesheet" href="/css/barraNavegadoraStyle.css"  crossorigin="anonymous">
+<link rel="stylesheet" href="/js/navegadoraScripts.js"  crossorigin="anonymous">
+   <link rel="stylesheet" href="/css/formStyle.css"  crossorigin="anonymous">
+</head>
+
+<body>
+
+<div id="container">
+<ul id="menu">
+  <li><a class="tab wave dark tocado" href="#"><span th:text="${usuario}" /></a>
+
+	<li><a  class="tab wave dark" href="/productos/verProductos">Productos</a>
+
+	<li><a  class="tab wave dark" href="/mensajes/verMensajes">Mensajes</a>
+	
+  	<li th:if="${usuario=='admin'}"><a class="tab wave dark" href="/productos/crearProductos">Crear Productos</a>
+  	
+  	<li th:if="${usuario=='admin'}"><a class="tab wave dark" href="/productos/editarProductos">Editar Productos</a>
+  	
+  	<li><a href="/logout">Salir</a><li>
+  	
+  </div>
+  
+</ul>
+</div>
+
+<form class="form" action="#" th:action="@{/user/editarUsuario}" th:object="${User}" method="post">
+    	<h2>Modificar Usuario</h2>
+		<input type="hidden" th:field="*{id}" />		
+		<input type="password" class="fadeIn third" name="contra" id="contra" placeholder="Password" />
+		<p th:if="${#fields.hasErrors('contra')}" th:errors="*{contra}"> Contra no valido </p>
+		
+		<input type="text" class="fadeIn fourth" name="email" id="email" placeholder="email" />
+		<p th:if="${#fields.hasErrors('email')}" th:errors="*{email}"> Email no valido </p>
+		
+		 <button type="submit">Modificar</button>
+	</form>
+	
+<h3 th:if="valido==1"> Contraseña con 4 o mas letras</h3>
+<h3 th:if="valido==2"> Email con @</h3>

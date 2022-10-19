@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
@@ -25,6 +26,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.example.ComprasOnline.helpers.ViewRouteHelper;
 import com.example.ComprasOnline.models.UsuarioModelo;
 import com.example.ComprasOnline.services.IUserServices;
+import com.example.ComprasOnline.services.implementation.UserService;
 
 @Controller
 public class UserController {
@@ -91,6 +93,48 @@ public class UserController {
 			
 			
 			mv.addObject("usuario",usuario);
+		}
+		
+		return mv;
+	}
+	
+	@GetMapping("/user/editarUser")
+	public ModelAndView editar() {
+
+		User user =(User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		
+		ModelAndView mv = new ModelAndView(ViewRouteHelper.USER_EDIT);
+		mv.addObject("User", userServices.buscarUsuario(user.getUsername()));
+		mv.addObject("usuario",user.getUsername());
+		return mv;
+	}
+	
+	
+	@PostMapping("user/editarUsuario")
+	public ModelAndView editarUsuario(@Valid @ModelAttribute("usuario") UsuarioModelo usuario, BindingResult b) {
+		ModelAndView mv = new ModelAndView();
+		User user =(User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		System.out.println("s");
+		if(b.hasErrors()) {
+			System.out.println("d");
+			mv.setViewName(ViewRouteHelper.USER_EDIT);
+			mv.addObject("usuario",user.getUsername());
+			mv.addObject("valido", 1);
+			mv.addObject("User", userServices.buscarUsuario(user.getUsername()));
+		}else {
+			System.out.println("j");
+			BCryptPasswordEncoder pe = new BCryptPasswordEncoder();
+			usuario.setContra(pe.encode(usuario.getContra()));
+			
+			try {
+				userServices.insertOrUpdate(usuario);
+				mv.setViewName("redirect:/user/editarUser");
+			}catch (Exception e) {
+				// TODO: handle exception
+				mv.setViewName(ViewRouteHelper.PRODUCTOS_EDITAR);
+				mv.addObject("error", 1); 
+			}
+			
 		}
 		
 		return mv;

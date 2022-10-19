@@ -15,7 +15,8 @@ public class ViewRouteHelper {
 	//USER
 	public final static String USER_LOGIN = "user/login";
 	public final static String USER_FORM = "user/userForm";
-
+	public final static String USER_EDIT = "user/modificarUser";
+	
 	//MENSAJES
 	public final static String MENSAJES_VER = "mensajes/verMensajes";
 	public final static String MENSAJES_VER_ID = "mensajes/verMensajesId";
