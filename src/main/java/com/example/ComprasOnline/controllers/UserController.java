@@ -67,16 +67,18 @@ public class UserController {
 	}
 	
 	@GetMapping("/crearUsuario")
-	public String crearUsuario (Model model) {
+	public ModelAndView crearUsuario (Model model) {
 		model.addAttribute("usuario", new UsuarioModelo());
-		return ViewRouteHelper.USER_FORM;
+		 
+		ModelAndView mv = new ModelAndView(ViewRouteHelper.USER_FORM);
+		return mv;
 	}
 	
 	@PostMapping("nuevoUsuario")
 	public ModelAndView nuevoUsuario(@Valid @ModelAttribute("usuario") UsuarioModelo usuario, BindingResult b) {
 		ModelAndView mv = new ModelAndView();
 		if(b.hasErrors()) {
-			mv.setViewName("redirect:/login");
+			mv.setViewName(ViewRouteHelper.USER_FORM);
 		}else {
 			
 			BCryptPasswordEncoder pe = new BCryptPasswordEncoder();

@@ -18,6 +18,7 @@ public class ProductoConverter {
 	
 	public ProductoModelo entityToModel(Producto producto) {
 		
+		System.out.println("hola");
 		return new ProductoModelo(producto.getId(), producto.getNombre(), producto.getCosto(), producto.getDescripcion(), rubroConverter.entityToModelSet(producto.getRubros()), null);
 		
 	}

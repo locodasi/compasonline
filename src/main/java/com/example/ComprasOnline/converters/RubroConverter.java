@@ -20,16 +20,19 @@ public class RubroConverter {
 	
 	public Set<RubroModelo> entityToModelSet(Set<Rubro> rubros) {
 		
+		System.out.println("adios");
 		Set<RubroModelo>  lista = new HashSet<>();
 		
-		for(Rubro r: rubros) {
+		if(rubros!= null){
+			for(Rubro r: rubros) {
 			
 			lista.add(entityToModel(r));
 			
 			
+			}
 		}
-		
-		
+			
+	
 		return lista;
 		
 	}

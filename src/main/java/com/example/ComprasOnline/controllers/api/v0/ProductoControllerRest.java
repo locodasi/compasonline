@@ -96,8 +96,11 @@ public class ProductoControllerRest {
 	@GetMapping("/listaDePersonas")
 	public ResponseEntity<Object> todasLasPersonasBD(){
 		
-		List<Producto> listaProductos = productoService.getAll();
 		
+		List<Producto> listaProductos = productoService.getAll();
+//		System.out.println("d");
+		//System.out.println(listaProductos);
+		//System.out.println(productoService.traerPorId(1));
 		Object body = "Lista vacia";
 				
 		if(listaProductos != null) {

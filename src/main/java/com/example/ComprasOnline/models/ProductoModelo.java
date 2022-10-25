@@ -17,7 +17,7 @@ public class ProductoModelo {
 	@Min(1)
 	private float costo;
 	
-	@NotBlank
+	
 	private String descripcion;
 	
 	@NotEmpty
@@ -28,7 +28,7 @@ public class ProductoModelo {
 	private String imagen;
 
 	public ProductoModelo() {}
-	public ProductoModelo(int id,@NotBlank String nombre, @Min(1) float costo, @NotBlank String descripcion,
+	public ProductoModelo(int id,@NotBlank String nombre, @Min(1) float costo,  String descripcion,
 			@NotEmpty @NotNull Set<RubroModelo> rubros,  @NotNull String imagen) {
 		super();
 		this.id=id;
