@@ -4,6 +4,8 @@ import javax.validation.constraints.NotBlank;
 
 public class ComentarioModelo {
 
+	private int id;
+	
 	private UsuarioModelo usuario;
 	
 	private ProductoModelo producto;
@@ -13,8 +15,9 @@ public class ComentarioModelo {
 	
 	public ComentarioModelo() {}
 
-	public ComentarioModelo(UsuarioModelo usuario, ProductoModelo producto, @NotBlank String comentario) {
+	public ComentarioModelo(int id, UsuarioModelo usuario, ProductoModelo producto, @NotBlank String comentario) {
 		super();
+		this.id= id;
 		this.usuario = usuario;
 		this.producto = producto;
 		this.comentario = comentario;
@@ -44,10 +47,21 @@ public class ComentarioModelo {
 		this.comentario = comentario;
 	}
 
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
 	@Override
 	public String toString() {
-		return "ComentarioModelo [usuario=" + usuario + ", producto=" + producto + ", comentario=" + comentario + "]";
+		return "ComentarioModelo [id=" + id + ", usuario=" + usuario + ", producto=" + producto + ", comentario="
+				+ comentario + "]";
 	}
+
+	
 	
 	
 }

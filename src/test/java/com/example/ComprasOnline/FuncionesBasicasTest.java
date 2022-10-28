@@ -46,7 +46,7 @@ public class FuncionesBasicasTest {
 	@Test
 	void comentarioModelo() {
 
-		ComentarioModelo r= new ComentarioModelo(null, null, null);
+		ComentarioModelo r= new ComentarioModelo(0,null, null, null);
 		 r.getComentario();
 		 r.getProducto();
 		 r.getUsuario();
