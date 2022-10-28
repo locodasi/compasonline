@@ -15,8 +15,8 @@ public class ImagenModelo {
 	
 	
 	//No se si es necesario tenerlo como atributo ni en el constructor
-	@NotNull
-	private ProductoModelo producto;
+//	@NotNull
+//	private ProductoModelo producto;
 
 	public ImagenModelo(int id, @NotBlank String url, @NotBlank String formato) {
 		super();
@@ -26,6 +26,15 @@ public class ImagenModelo {
 	}
 	
 	public ImagenModelo() {}
+
+//	public ImagenModelo(int id2, String url2, String formato2, ProductoModelo entityToModel) {
+//		// TODO Auto-generated constructor stub
+//		super();
+//		this.id = id;
+//		this.url = url;
+//		this.formato = formato;
+//		this.producto = entityToModel;
+//	}
 
 	public int getId() {
 		return id;
@@ -51,13 +60,13 @@ public class ImagenModelo {
 		this.formato = formato;
 	}
 
-	public ProductoModelo getProducto() {
-		return producto;
-	}
-
-	public void setProducto(ProductoModelo producto) {
-		this.producto = producto;
-	}
+//	public ProductoModelo getProducto() {
+//		return producto;
+//	}
+//
+//	public void setProducto(ProductoModelo producto) {
+//		this.producto = producto;
+//	}
 	
 	
 	

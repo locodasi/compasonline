@@ -80,12 +80,12 @@ public class FuncionesBasicasTest {
 
 		ImagenModelo r= new ImagenModelo(1, null, null);
 		 r.getId();
-		 r.getProducto();
+		// r.getProducto();
 		 r.getFormato();
 		 r.getUrl();
 		 r.setFormato(null);
 		 r.setId(2);
-		 r.setProducto(null);
+		// r.setProducto(null);
 		 r.setUrl(null);
 		 
 		 r = new ImagenModelo();

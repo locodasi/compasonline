@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.ComprasOnline.entities.Producto;
+import com.example.ComprasOnline.models.ImagenModelo;
 import com.example.ComprasOnline.models.ProductoModelo;
 import com.example.ComprasOnline.models.RubroModelo;
 import com.example.ComprasOnline.models.request.ProductoRequest;
@@ -48,11 +49,16 @@ public class ProductoControllerRest {
 		Object body = "";
 		HttpStatus status = HttpStatus.CONFLICT;
 		
-		ProductoModelo p = new ProductoModelo();		
+		ProductoModelo p = new ProductoModelo();
+		ImagenModelo i = new ImagenModelo();
+		
+		i.setFormato(producto.getFormato());
+		i.setUrl(producto.getUrl());
 		
 		p.setCosto(producto.getCosto());
 		p.setDescripcion(producto.getDescripcion());
 		p.setNombre(producto.getNombre());
+		p.setImagen(i);
 		
 		Set<RubroModelo> rubros = new HashSet<>();
 		for (Integer id_rubro : producto.getRubros()) {
@@ -93,7 +99,7 @@ public class ProductoControllerRest {
 	
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	@Operation(summary="Lista de productos", description = "Devuelve la lista de productos con su imagen y rubros")
-	@GetMapping("/listaDePersonas")
+	@GetMapping("/listaDeProductos")
 	public ResponseEntity<Object> todasLasPersonasBD(){
 		
 		
@@ -128,6 +134,8 @@ public class ProductoControllerRest {
 		p.setCosto(producto.getCosto());
 		p.setDescripcion(producto.getDescripcion());
 		p.setNombre(producto.getNombre());
+		p.getImagen().setFormato(producto.getFormato());
+		p.getImagen().setUrl(producto.getUrl());
 		
 		Set<RubroModelo> rubros = new HashSet<>();
 		for (Integer id_rubro : producto.getRubros()) {

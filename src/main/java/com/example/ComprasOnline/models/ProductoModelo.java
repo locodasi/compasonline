@@ -25,11 +25,11 @@ public class ProductoModelo {
 	private Set<RubroModelo> rubros;
 	
 	@NotNull
-	private String imagen;
+	private ImagenModelo imagen;
 
 	public ProductoModelo() {}
 	public ProductoModelo(int id,@NotBlank String nombre, @Min(1) float costo,  String descripcion,
-			@NotEmpty @NotNull Set<RubroModelo> rubros,  @NotNull String imagen) {
+			@NotEmpty @NotNull Set<RubroModelo> rubros,  @NotNull ImagenModelo imagen) {
 		super();
 		this.id=id;
 		this.nombre = nombre;
@@ -77,11 +77,12 @@ public class ProductoModelo {
 		this.rubros = rubros;
 	}
 
-
-	public String getImagen() {
+	
+	
+	public ImagenModelo getImagen() {
 		return imagen;
 	}
-	public void setImagen(String imagen) {
+	public void setImagen(ImagenModelo imagen) {
 		this.imagen = imagen;
 	}
 	@Override

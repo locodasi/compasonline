@@ -18,8 +18,12 @@ public class ProductoRequest {
 	@JsonProperty("Nombre")
 	private String nombre;
 	
-//	@JsonProperty("Id_imagen")
-//	private int id_imagen;
+	//Datos imagen
+	@JsonProperty("Url")
+	private String url;
+	
+	@JsonProperty("Formato")
+	private String formato;
 	
 	@JsonProperty("Rubros")
 	private List<Integer> rubros;
@@ -28,26 +32,31 @@ public class ProductoRequest {
 		
 	}
 	
-//	public ProductoRequest(int id, float costo, String descripcion, String nombre, int id_imagen,
-//			List<Integer> rubros) {
-//		super();
-//		this.id = id;
-//		this.costo = costo;
-//		this.descripcion = descripcion;
-//		this.nombre = nombre;
-//		this.id_imagen = id_imagen;
-//		this.rubros = rubros;
-//	}
 	
 	
 
-//	@Override
-//	public String toString() {
-//		return "ProductoRequest [id=" + id + ", costo=" + costo + ", descripcion=" + descripcion + ", nombre=" + nombre
-//				+ ", id_imagen=" + id_imagen + ", rubros=" + rubros + "]";
-//	}
+
 	
 	
+
+	public ProductoRequest(int id, float costo, String descripcion, String nombre, String url, String formato,
+			List<Integer> rubros) {
+		super();
+		this.id = id;
+		this.costo = costo;
+		this.descripcion = descripcion;
+		this.nombre = nombre;
+		this.url = url;
+		this.formato = formato;
+		this.rubros = rubros;
+	}
+
+
+
+
+
+
+
 
 	public ProductoRequest(int id, float costo, String descripcion, String nombre, List<Integer> rubros) {
 	super();
@@ -58,11 +67,20 @@ public class ProductoRequest {
 	this.rubros = rubros;
 }
 
+
+
 	@Override
 	public String toString() {
 		return "ProductoRequest [id=" + id + ", costo=" + costo + ", descripcion=" + descripcion + ", nombre=" + nombre
-				+ ", rubros=" + rubros + "]";
+				+ ", url=" + url + ", formato=" + formato + ", rubros=" + rubros + "]";
 	}
+
+
+
+
+
+
+
 
 	public int getId() {
 		return id;
@@ -96,13 +114,6 @@ public class ProductoRequest {
 		this.nombre = nombre;
 	}
 
-//	public int getId_imagen() {
-//		return id_imagen;
-//	}
-//
-//	public void setId_imagen(int id_imagen) {
-//		this.id_imagen = id_imagen;
-//	}
 
 	public List<Integer> getRubros() {
 		return rubros;
@@ -110,6 +121,22 @@ public class ProductoRequest {
 
 	public void setRubros(List<Integer> rubros) {
 		this.rubros = rubros;
+	}
+
+	public String getUrl() {
+		return url;
+	}
+
+	public void setUrl(String url) {
+		this.url = url;
+	}
+
+	public String getFormato() {
+		return formato;
+	}
+
+	public void setFormato(String formato) {
+		this.formato = formato;
 	}
 	
 	

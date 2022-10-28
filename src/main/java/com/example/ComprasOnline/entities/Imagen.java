@@ -50,6 +50,15 @@ public class Imagen {
 	
 	public Imagen() {}
 
+	public Imagen(int id2, String url2, String formato2, Producto modelToEntity) {
+		// TODO Auto-generated constructor stub
+		super();
+		this.id = id;
+		this.url = url;
+		this.formato = formato;
+		this.producto = modelToEntity;
+	}
+
 	public int getId() {
 		return id;
 	}

@@ -16,10 +16,14 @@ public class ProductoConverter {
 	@Qualifier("rubroConverter")
 	private RubroConverter rubroConverter;
 	
+	@Autowired
+	@Qualifier("imagenConverter")
+	private ImagenConverter imagenConverter;
+	
 	public ProductoModelo entityToModel(Producto producto) {
 		
-		System.out.println("hola");
-		return new ProductoModelo(producto.getId(), producto.getNombre(), producto.getCosto(), producto.getDescripcion(), rubroConverter.entityToModelSet(producto.getRubros()), null);
+		//System.out.println("hola");
+		return new ProductoModelo(producto.getId(), producto.getNombre(), producto.getCosto(), producto.getDescripcion(), rubroConverter.entityToModelSet(producto.getRubros()), imagenConverter.entityToModel(producto.getImagen()));
 		
 	}
 	
@@ -27,6 +31,6 @@ public class ProductoConverter {
 	
 	public Producto modelToEntity(ProductoModelo productoModelo) {
 		
-		return new Producto(productoModelo.getId(), productoModelo.getNombre(), productoModelo.getCosto(), productoModelo.getDescripcion(), rubroConverter.modeloAEntidadSet(productoModelo.getRubros()), null);
+		return new Producto(productoModelo.getId(), productoModelo.getNombre(), productoModelo.getCosto(), productoModelo.getDescripcion(), rubroConverter.modeloAEntidadSet(productoModelo.getRubros()), imagenConverter.modelToEntity(productoModelo.getImagen()));
 	}
 }
