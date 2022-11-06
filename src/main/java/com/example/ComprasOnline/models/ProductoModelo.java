@@ -1,5 +1,6 @@
 package com.example.ComprasOnline.models;
 
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -20,11 +21,11 @@ public class ProductoModelo {
 	
 	private String descripcion;
 	
-	@NotEmpty
-	@NotNull
-	private Set<RubroModelo> rubros;
 	
-	@NotNull
+	private Set<Integer> rubrosid = new HashSet<>();
+	
+	private Set<RubroModelo> rubros = new HashSet<>();;
+	
 	private ImagenModelo imagen;
 
 	public ProductoModelo() {}
@@ -85,11 +86,17 @@ public class ProductoModelo {
 	public void setImagen(ImagenModelo imagen) {
 		this.imagen = imagen;
 	}
+
 	@Override
 	public String toString() {
-		return "ProductoModelo [nombre=" + nombre + ", costo=" + costo + ", descripcion=" + descripcion + ", rubros="
-				+ rubros + ", imagenes=" + imagen + "]";
+		return "ProductoModelo [id=" + id + ", nombre=" + nombre + ", costo=" + costo + ", descripcion=" + descripcion
+				+ ", rubrosid=" + rubrosid + ", rubros=" + rubros + ", imagen=" + imagen + "]";
 	}
-	
+	public Set<Integer> getRubrosid() {
+		return rubrosid;
+	}
+	public void setRubrosid(Set<Integer> rubrosid) {
+		this.rubrosid = rubrosid;
+	}
 	
 }
