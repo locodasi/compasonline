@@ -10,6 +10,8 @@ import com.example.ComprasOnline.models.ImagenModelo;
 import com.example.ComprasOnline.models.ProductoModelo;
 import com.example.ComprasOnline.models.RubroModelo;
 import com.example.ComprasOnline.models.UsuarioModelo;
+import com.example.ComprasOnline.models.request.ComentarioRequest;
+import com.example.ComprasOnline.models.request.ProductoRequest;
 
 public class FuncionesBasicasTest {
 
@@ -40,6 +42,40 @@ public class FuncionesBasicasTest {
 		 
 
 		System.out.println(r);
+
+	}
+	
+	@Test
+	void request() {
+
+		ComentarioRequest c = new ComentarioRequest();
+		ComentarioRequest c2 = new ComentarioRequest(0, null, 0, null);
+		c.setComentario(null);
+		c.setId(0);
+		c.setId_producto(0);
+		c.setUsuario(null);
+		c.getComentario();
+		c.getId();
+		c.getId_producto();
+		c.getUsuario();
+		System.out.println(c);
+		ProductoRequest p = new ProductoRequest();
+		ProductoRequest p2 = new ProductoRequest(0, 0, null, null, null);
+		p.setCosto(0);
+		p.setDescripcion(null);
+		p.setFormato(null);
+		p.setId(0);
+		p.setNombre(null);
+		p.setRubros(null);
+		p.setUrl(null);
+		p.getCosto();
+		p.getDescripcion();
+		p.getFormato();
+		p.getId();
+		p.getNombre();
+		p.getRubros();
+		p.getUrl();
+		System.out.println(p);
 
 	}
 	

@@ -61,6 +61,18 @@ public class ComentarioModelo {
 				+ comentario + "]";
 	}
 
+	@Override
+	public boolean equals(Object obj) {
+		// TODO Auto-generated method stub
+		if(obj!=null && obj instanceof ComentarioModelo) {
+			ComentarioModelo c = (ComentarioModelo) obj;
+			if(this.id==c.id) {
+				return true;
+			}
+		}
+		return false;
+	}
+
 	
 	
 	

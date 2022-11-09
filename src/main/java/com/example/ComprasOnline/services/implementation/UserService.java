@@ -65,7 +65,7 @@ public class UserService implements UserDetailsService, IUserServices {
 	
 	
 	@Override
-	public UsuarioModelo insertOrUpdate(UsuarioModelo usuarioModelo) {
+	public UsuarioModelo insert(UsuarioModelo usuarioModelo) {
 
 		com.example.ComprasOnline.entities.User usuario = userRepository.save(userConverter.modelToEntity(usuarioModelo));
 		
@@ -73,6 +73,16 @@ public class UserService implements UserDetailsService, IUserServices {
 		
 		UserRole entidadRol = new UserRole(0, usuario, "ROLE_USER");
 		userRoleRepository.save(entidadRol);
+		return us;
+	}
+	
+	@Override
+	public UsuarioModelo update(UsuarioModelo usuarioModelo) {
+
+		com.example.ComprasOnline.entities.User usuario = userRepository.save(userConverter.modelToEntity(usuarioModelo));
+		
+		UsuarioModelo us = userConverter.entityToModel(usuario);
+		
 		return us;
 	}
 	
@@ -92,6 +102,13 @@ public class UserService implements UserDetailsService, IUserServices {
 	public com.example.ComprasOnline.entities.User buscarUsuario(String usuario) {
 		// TODO Auto-generated method stub
 		return userRepository.findByUsuario(usuario);
+	}
+	
+	@Override
+	public UsuarioModelo buscarUsuarioModelo(String usuario) {
+		// TODO Auto-generated method stub
+		return userConverter.entityToModel(userRepository.findByUsuario(usuario));
+
 	}
 	
 }

@@ -12,6 +12,7 @@ public class ViewRouteHelper {
 	public final static String PRODUCTOS_VER = "productos/verProductos";
 	public final static String PRODUCTOS_EDITAR = "productos/editarProductos";
 	public final static String PRODUCTOS_CREAR = "productos/crearProductos";
+	public final static String PRODUCTOS_DETALLE = "productos/vistaDetallada";
 	//USER
 	public final static String USER_LOGIN = "user/login";
 	public final static String USER_FORM = "user/userForm";

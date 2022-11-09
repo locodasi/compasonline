@@ -2,8 +2,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link rel="stylesheet" href="/css/barraNavegadoraStyle.css"  crossorigin="anonymous">
-<link rel="stylesheet" href="/js/navegadoraScripts.js"  crossorigin="anonymous">
-   
+<link rel="stylesheet" href="/css/tablasEdicionStyle.css"  crossorigin="anonymous">
+ <link rel="stylesheet" href="/css/formStyle.css"  crossorigin="anonymous">
 </head>
 
 <body>
@@ -28,5 +28,57 @@
 </div>
 
 
-<p> hola </p>
+
+	<form class="form " action="#" th:action="@{/productos/busqueda}" th:object="${busqueda}" method="post">
+	  
+	 	<p type="Rubros:"><select name="rubros" th:field="*{idRubro}">
+  						<option th:each= "r : ${rubrosLista}" th:text="${r.descripcion}"  th:value="${r.id}"  </option>
+  		</select></p>
+  		<p type="Costo minimo:"><input type="number" step="0.01" min="0" name="precioMin" placeholder="0" th:field="*{precioMin}"></input></p>
+  		<p th:if="${#fields.hasErrors('precioMin')}" th:errors="*{precioMin}">Valor Minimo 0 </p>
+  		
+  		<p type="Costo maximo:"><input type="number" step="0.01" min="0" name="precioMax" placeholder="0" th:field="*{precioMax}"></input></p>
+		<p th:if="${#fields.hasErrors('precioMax')}" th:errors="*{precioMax}"> Valor Minimo 0 </p>
+		
+	  <button type="submit">Buscar</button>
+	</form>
+	  
+
+
+<div class="container">
+	<h1> Productos</h1>
+	<table>
+		<thead>
+			<tr>
+				<th>#ID</th>
+				<th>Imagen</th>
+				<th>Nombre</th>
+				<th>Rubros</th>
+				<th>Precio</th>
+				<th>Acciones</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each= "p : ${listaProductos}">
+				<td th:text = "${p.id}"></td>
+				<td>
+					<img
+						th:alt="${p.imagen.url}"
+						th:src="@{ '/images/' + ${p.imagen.url} }"
+						style= "max-width:100%"
+					>
+				</td>
+				<td th:text = "${p.nombre}"></td>
+				<td>
+					<p th:each= "r : ${p.rubros}" th:text= "${r.descripcion}"></p>
+				</td>
+				<td th:text = "${p.costo}"></td>
+				
+				<td> 
+					<a th:href="@{/productos/detalleProducto/} + ${p.id}" th:text="Detalles" title= "Detalles"></a>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
 </body>

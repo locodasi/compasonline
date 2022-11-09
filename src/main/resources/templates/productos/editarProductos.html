@@ -53,22 +53,37 @@
 </div>
 
 <div class="container">
-	<h1> Lista de rubrosssss</h1>
+	<h1> Lista de productos</h1>
 	<table>
 		<thead>
 			<tr>
 				<th>#ID</th>
-				<th>Descripcion</th>
+				<th>Imagen</th>
+				<th>Nombre</th>
+				<th>Rubros</th>
+				<th>Precio</th>
 				<th>Acciones</th>
 			</tr>
 		</thead>
 		<tbody>
-			<tr th:each= "r : ${listaRubros}">
-				<td th:text = "${r.id}"></td>
-				<td th:text = "${r.descripcion}"></td>
+			<tr th:each= "p : ${listaProductos}">
+				<td th:text = "${p.id}"></td>
+				<td>
+					<img
+						th:alt="${p.imagen.url}"
+						th:src="@{ '/images/' + ${p.imagen.url} }"
+						style= "max-width:100%"
+					>
+				</td>
+				<td th:text = "${p.nombre}"></td>
+				<td>
+					<p th:each= "r : ${p.rubros}" th:text= "${r.descripcion}"></p>
+				</td>
+				<td th:text = "${p.costo}"></td>
+				
 				<td> 
-					<a th:href="@{/productos/editarRubro/} + ${r.id}" th:text="Editar" title= "Editar"></a>
-				    <a th:href="@{/productos/borrarRubro/} + ${r.id}" th:text="Borrar" title= "Borrar" class= "borrar"></a>
+					<a th:href="@{/productos/editarProducto/} + ${p.id}" th:text="Editar" title= "Editar"></a>
+				    <a th:href="@{/productos/borrarProducto/} + ${p.id}" th:text="Borrar" title= "Borrar" class= "borrar"></a>
 				</td>
 			</tr>
 		</tbody>

@@ -60,20 +60,20 @@ public class ComentarioIT {
 		
 	}
 	
-	@Test
-	void BorrarComen() {
-		cometarioService.remove(1);
-	}
-	
-	@Test
-	void TraerComen() {
-		List<Comentario> listaC = new ArrayList<>();
-		
-		listaC.addAll(cometarioService.getAll());
-		
-		for (Comentario comentario : listaC) {
-			System.out.println(comentario.getUsuario().getUsuario() + ": " + comentario.getComentario() + " Sobre: " + comentario.getProducto().getNombre());
-			
-		}
-	}
+//	@Test
+//	void BorrarComen() {
+//		cometarioService.remove(1);
+//	}
+//	
+//	@Test
+//	void TraerComen() {
+//		List<Comentario> listaC = new ArrayList<>();
+//		
+//		listaC.addAll(cometarioService.getAll());
+//		
+//		for (Comentario comentario : listaC) {
+//			System.out.println(comentario.getUsuario().getUsuario() + ": " + comentario.getComentario() + " Sobre: " + comentario.getProducto().getNombre());
+//			
+//		}
+//	}
 }

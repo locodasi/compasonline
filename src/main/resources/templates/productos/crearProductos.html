@@ -39,27 +39,30 @@
   <button type="submit">Agregar/Modificar</button>
 </form>
 
-<form class="form " action="#" th:action="@{/api/v0/producto/agregarProducto}" th:object="${producto}" method="post">
+<form class="form " action="#" th:action="@{/productos/nuevoProducto}" th:object="${producto}" method="post" enctype="multipart/form-data">
   <h2>Creador de productos</h2>
   
   <input type="hidden" th:field="*{id}" />
   <p type="Nombre:"><input type="text" name="nombre" placeholder="EJ: Camisa" th:field="*{nombre}"></input></p>
   <p th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"> nombre no valido </p>
   
-  <p type="Costo:"><input type="number" name="costo" placeholder="0" th:field="*{costo}"></input></p>
+  <p type="Costo:"><input type="number" step="0.01" name="costo" placeholder="0" th:field="*{costo}"></input></p>
   <p th:if="${#fields.hasErrors('costo')}" th:errors="*{costo}"> costo no valido </p>
   
   <p type="Descripcion:"><textarea rows="5" name="descripcion" placeholder="EJ: remera muy linda" th:field="*{descripcion}"></textarea></p>
   <p th:if="${#fields.hasErrors('descripcion')}" th:errors="*{descripcion}"> descripcion no valido </p>
   
-  <p type="Rubros:"><select name="rubros" size="5" th:field="*{rubros}" multiple required>
-  						<option th:each= "r : ${listaRubros}" th:text="${r.descripcion}" value="${r.id}">  </option>
+  <p type="Rubros:"><select name="rubros" size="5" th:field="*{rubrosid}" multiple required>
+  						<option th:each= "r : ${listaRubros}" th:text="${r.descripcion}"  th:value="${r.id}"  </option>
   					</select></p>
-  <p th:if="${#fields.hasErrors('rubros')}" th:errors="*{rubros}"> Elije al menos un rubro </p>
+  
   <small class="text-muted"><code>Mayús + clic</code> para seleccionar más de una opción</small>
 
+	<input type="hidden" th:field="*{imagen.id}" />
+	<input type="hidden" th:field="*{imagen.url}" />
+	<input type="hidden" th:field="*{imagen.formato}" />
   <p type="Imagen:"><input class="form-control"  type="file" name="file"  id="imagen" accept="image/*"></input></p>
-  <p th:if="${#fields.hasErrors('imagen')}" th:errors="*{imagen}"> Elije al menos una imagen</p>
+  <p th:if="${error==1}"> Elije al menos una imagen</p>
   
 
   <button type="submit">Agregar/Modificar</button>

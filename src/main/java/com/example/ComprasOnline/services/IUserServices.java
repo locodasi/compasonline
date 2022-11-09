@@ -9,9 +9,13 @@ public interface IUserServices {
 
 	public List<User> getAll();
 	
-	public UsuarioModelo insertOrUpdate(UsuarioModelo usuarioModelo);
+	public UsuarioModelo insert(UsuarioModelo usuarioModelo);
+	
+	public UsuarioModelo update(UsuarioModelo usuarioModelo);
 	
 	public boolean remove(int id);
 	
 	public User buscarUsuario(String usuario);
+	
+	public UsuarioModelo buscarUsuarioModelo(String usuario);
 }

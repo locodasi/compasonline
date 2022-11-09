@@ -60,6 +60,11 @@ public class ImagenModelo {
 		this.formato = formato;
 	}
 
+	@Override
+	public String toString() {
+		return "ImagenModelo [id=" + id + ", url=" + url + ", formato=" + formato + "]";
+	}
+
 //	public ProductoModelo getProducto() {
 //		return producto;
 //	}
