@@ -26,7 +26,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
-<<<<<<< HEAD
 import com.example.ComprasOnline.entities.Comentario;
 import com.example.ComprasOnline.entities.Producto;
 import com.example.ComprasOnline.entities.Rubro;
@@ -39,13 +38,11 @@ import com.example.ComprasOnline.models.ProductoModelo;
 import com.example.ComprasOnline.models.RubroModelo;
 import com.example.ComprasOnline.models.request.ComentarioRequest;
 import com.example.ComprasOnline.services.IComentarioService;
-=======
 import com.example.ComprasOnline.entities.Rubro;
 import com.example.ComprasOnline.helpers.ViewRouteHelper;
 import com.example.ComprasOnline.models.ImagenModelo;
 import com.example.ComprasOnline.models.ProductoModelo;
 import com.example.ComprasOnline.models.RubroModelo;
->>>>>>> 73624d38860836e9f71d646128b5e63b99cbd484
 import com.example.ComprasOnline.services.IProductoServices;
 import com.example.ComprasOnline.services.IRubroService;
 import com.example.ComprasOnline.services.IUserServices;
@@ -65,7 +62,6 @@ public class ProductosController {
 	private IRubroService rubroService;
 	
 	@Autowired
-<<<<<<< HEAD
 	@Qualifier("comentarioService")
 	private IComentarioService comentarioService;
 	
@@ -82,12 +78,6 @@ public class ProductosController {
 	private BusquedaHelper busqueda = new BusquedaHelper();
 	
 	private List <Producto> productos = new ArrayList<>();
-=======
-	@Qualifier("productoService")
-	private IProductoServices productoService;
-	
-	ModelAndView mv = new ModelAndView();
->>>>>>> 73624d38860836e9f71d646128b5e63b99cbd484
 	
 	@GetMapping("verProductos")
 	public ModelAndView verProductos() {
@@ -193,11 +183,8 @@ public class ProductosController {
 			producto.getRubros().add(rubroService.traerPorId(id));
 		}
 		
-<<<<<<< HEAD
 		//System.out.println("dddd " + producto);
-=======
 		System.out.println("dddd " + producto);
->>>>>>> 73624d38860836e9f71d646128b5e63b99cbd484
 		if(!imagen.isEmpty()) {
 			Path directorioImagenes = Paths.get("src//main//resources//static/images");
 			
@@ -209,11 +196,8 @@ public class ProductosController {
 				Files.write(rutaCompleta, bytesImg);
 				
 				
-<<<<<<< HEAD
 				//System.out.println("gggg " + producto);
-=======
 				System.out.println("gggg " + producto);
->>>>>>> 73624d38860836e9f71d646128b5e63b99cbd484
 				if(producto.getImagen().getId()== 0  || producto.getImagen()== null) {
 					ImagenModelo im = new ImagenModelo();
 					im.setUrl(imagen.getOriginalFilename());
@@ -233,13 +217,13 @@ public class ProductosController {
 		
 		System.out.println(producto);
 		mv.addObject("usuario",user.getUsername());
-		if(b.hasErrors()) {
+		if(b.hasErrors() ) {
 			System.out.println("h");
 
 			mv.addObject("producto", producto);
 			//mv.addObject("listaRubros", rubroService.getAll());
 			mv.setViewName(ViewRouteHelper.PRODUCTOS_CREAR);
-		}else if(producto.getImagen()==null){
+		}else if(imagen.isEmpty()){
 			mv.addObject("producto", producto);
 			mv.addObject("error", 1); 
 		
@@ -285,7 +269,6 @@ public class ProductosController {
 		mv.addObject("usuario",user.getUsername());
 		return mv;
 	}
-<<<<<<< HEAD
 	@GetMapping("busqueda2")
 	public ModelAndView b2() {
 		User user =(User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
@@ -401,6 +384,4 @@ public class ProductosController {
 		mv.setViewName(ViewRouteHelper.PRODUCTOS_DETALLE);
 		return mv;
 	}
-=======
->>>>>>> 73624d38860836e9f71d646128b5e63b99cbd484
 }
