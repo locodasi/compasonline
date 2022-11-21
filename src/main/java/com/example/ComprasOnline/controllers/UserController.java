@@ -202,7 +202,7 @@ public class UserController {
 	
 
 	@GetMapping("/user/borrarUser/{id}")
-	public ModelAndView borrarRubro(@PathVariable("id") int id, Model model) {
+	public ModelAndView borrarUsuario(@PathVariable("id") int id, Model model) {
 
 		userServices.remove(id);
 		

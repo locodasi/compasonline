@@ -21,6 +21,14 @@ table {
 	box-shadow: 0 0 20px rgba(0,0,0,0.1);
 }
 
+.table2 {
+	background: linear-gradient(45deg, #49a09d, #5f2c82);
+	width: 150px;
+	border-collapse: collapse;
+	overflow: hidden;
+	box-shadow: 0 0 20px rgba(0,0,0,0.1);
+}
+
 th,
 td {
 	padding: 15px;

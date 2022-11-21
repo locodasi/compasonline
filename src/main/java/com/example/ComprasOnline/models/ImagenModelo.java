@@ -25,7 +25,9 @@ public class ImagenModelo {
 		this.formato = formato;
 	}
 	
-	public ImagenModelo() {}
+	public ImagenModelo() {
+		this.url=null;
+	}
 
 //	public ImagenModelo(int id2, String url2, String formato2, ProductoModelo entityToModel) {
 //		// TODO Auto-generated constructor stub

@@ -1,5 +1,7 @@
 package com.example.ComprasOnline.helpers;
 
+//swagger-ui.html
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,7 +28,7 @@ public class FuncionesHelper {
 	
 	public List <Producto> getProductosBusqueda(List<Producto> productos, BusquedaHelper busqueda){
 		List<Producto> productosBusqueda = new ArrayList<>();
-		
+		List<Producto> productosBusqueda3 = new ArrayList<>();
 		if(busqueda.getIdRubro()!=0) {
 			System.out.println("rurbo");
 			productosBusqueda = busquedaPorRubro(productos, productosBusqueda, busqueda.getIdRubro());
@@ -36,14 +38,26 @@ public class FuncionesHelper {
 				
 				for (Producto producto : productosBusqueda) {
 					
-					if(producto.getCosto()< busqueda.getPrecioMin()) {
-						productosBusqueda.remove(producto);
+					if(producto.getCosto()>= busqueda.getPrecioMin()) {
+						productosBusqueda3.add(producto);
 					}
 				}
 			}
 			System.out.println(productosBusqueda.size());
 			
-			if(busqueda.getPrecioMax()!=0) {
+			if(busqueda.getPrecioMax()!=0 && busqueda.getPrecioMin()!=0) {
+				List<Producto> productosBusqueda2 = new ArrayList<>();
+				
+				for (Producto producto : productosBusqueda3) {
+					
+					if(producto.getCosto()<= busqueda.getPrecioMax()) {
+						productosBusqueda2.add(producto);
+					}
+				}
+				
+				System.out.println(productosBusqueda2.size());
+				return productosBusqueda2;
+			}else if(busqueda.getPrecioMax()!=0) {
 				List<Producto> productosBusqueda2 = new ArrayList<>();
 				
 				for (Producto producto : productosBusqueda) {
@@ -53,12 +67,18 @@ public class FuncionesHelper {
 					}
 				}
 				
+				System.out.println(productosBusqueda2.size());
 				return productosBusqueda2;
 			}
 			
-//			System.out.println(productosBusqueda.size());
+			System.out.println(productosBusqueda.size());
 			
-			return productosBusqueda;
+			if(busqueda.getPrecioMin()!=0) {
+				return productosBusqueda3;
+			}else {
+				return productosBusqueda;
+			}
+			
 			
 		}else if (busqueda.getPrecioMin()!=0) {
 			

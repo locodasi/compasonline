@@ -103,7 +103,7 @@ public class ProductoControllerRest {
 	public ResponseEntity<Object> todasLasPersonasBD(){
 		
 		
-		List<Producto> listaProductos = productoService.getAll();
+		List<ProductoModelo> listaProductos = productoService.getAllModel();
 //		System.out.println("d");
 		//System.out.println(listaProductos);
 		//System.out.println(productoService.traerPorId(1));

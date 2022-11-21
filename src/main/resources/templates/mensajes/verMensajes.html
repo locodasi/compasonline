@@ -4,7 +4,7 @@
 <link rel="stylesheet" href="/css/barraNavegadoraStyle.css"  crossorigin="anonymous">
 <link rel="stylesheet" href="/css/tablasEdicionStyle.css"  crossorigin="anonymous">
 <link rel="stylesheet" href="/css/formStyle.css"  crossorigin="anonymous">
-<link rel="stylesheet" href="/css/styles.css"  crossorigin="anonymous">
+
 
 </head>
 
@@ -33,14 +33,17 @@
 <div th:if="${usuario=='admin'}">
 
 <div class="container">
-	<table style="white-space: pre-wrap;">
-		<tbody>
-			<tr th:each= "u : ${usuarios}">
-			<td>
+		
+		<br><br>
+
+	<table class="table2">
+		
+			
+			<td th:each= "u : ${usuarios}">
 				<a th:if="${u.usuario!='admin'}" th:href="@{/mensajes/verMensajesId/} + ${u.usuario}" th:text = "${u.usuario}"></a>
 			</td>
-			</tr>
-		</tbody>
+			
+		
 	</table>
 </div>
 

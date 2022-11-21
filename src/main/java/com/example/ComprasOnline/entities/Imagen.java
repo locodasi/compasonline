@@ -83,7 +83,12 @@ public class Imagen {
 		this.formato = formato;
 	}
 
+	@Override
+	public String toString() {
+		return "Imagen [id=" + id + ", url=" + url + ", formato=" + formato + ", producto=" + producto + "]";
+	}
 
 
+	
 	
 }

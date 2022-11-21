@@ -7,12 +7,12 @@
 
 
 </head>
-
+<body>
 <a th:href="@{/productos/busqueda2}"> c-- </a> <h5 th:text="@{Vista detallada}"> </h5>
 
 
 <div>
-	<div class="container" style="background-color:whitesmoke;">
+	<div class="container" style="background-color:rgb(192, 192, 192);">
   <!-- Page Heading -->
   <div class="row">
     <div class="col-12">
@@ -22,7 +22,7 @@
   <!-- /.row -->
 
   <div >
-    <div class="col-lg-6 mb-4">
+    
       
 
         <div class="main-product-image space">
@@ -33,9 +33,9 @@
 					>
 
         </div>
-    </div>
+  
 
-    <div class="col-lg-6">
+    <div >
 
           <!-- Product Price  -->
           <div class="form-group price_elem row">
@@ -86,7 +86,7 @@
 </div>
 </div>
 
-<form  class="form" th:action="@{/productos/nuevoComen}" th:object="${comen}" method="post">
+<form  class="form text-left text-nowrap" th:action="@{/productos/nuevoComen}" th:object="${comen}" method="post">
 
   <textarea rows="7" type="text" name="comentario" th:field="*{comentario}" ></textarea>
  
@@ -94,3 +94,4 @@
   <button type="submit">Enviar</button>
 </form>
 
+</body>

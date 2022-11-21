@@ -82,6 +82,12 @@ public class Comentario {
 	public void setComentario(String comentario) {
 		this.comentario = comentario;
 	}
+
+	@Override
+	public String toString() {
+		return "Comentario [id=" + id + ", usuario=" + usuario + ", producto=" + producto + ", comentario=" + comentario
+				+ ", enviado=" + enviado + "]";
+	}
 	
 	
 	
