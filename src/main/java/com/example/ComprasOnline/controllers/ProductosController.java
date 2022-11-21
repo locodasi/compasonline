@@ -26,7 +26,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.example.ComprasOnline.entities.Comentario;
 import com.example.ComprasOnline.entities.Producto;
 import com.example.ComprasOnline.entities.Rubro;
 import com.example.ComprasOnline.helpers.BusquedaHelper;
@@ -226,6 +225,7 @@ public class ProductosController {
 			mv.addObject("producto", producto);
 			//mv.addObject("listaRubros", rubroService.getAll());
 			mv.setViewName(ViewRouteHelper.PRODUCTOS_CREAR);
+
 		}else if(imagen.isEmpty() && producto.getImagen().getUrl().length()==0){
 			mv.addObject("producto", producto);
 			mv.addObject("error", 1); 
